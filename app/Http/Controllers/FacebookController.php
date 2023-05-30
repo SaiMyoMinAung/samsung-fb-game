@@ -106,9 +106,9 @@ class FacebookController extends Controller
             // crop
             // $tvImage->crop(1024, 960);
 
-            $backgroundImage = $imageManager->make(public_path('samsung_support_photos/tv2.png'));
+            $backgroundImage = $imageManager->make(public_path('samsung_support_photos/TV.jpg'));
 
-            $backgroundImage->insert($avatarImage, 'top-left', 300, 430);
+            $backgroundImage->insert($avatarImage, 'top-left', 250, 440);
             // $backgroundImage->insert($avatarImage, 'top-left', 0, 0);
 
             $detector = new ZawgyiDetector();
@@ -123,8 +123,8 @@ class FacebookController extends Controller
                 $profileName = $user->name;
             }
 
-            $firstTitle = $profileName . ' သာ SAMSUNG TV ျဖစ္မယ္ဆိုရင္';
-            $secondTitle = 'အေကာင္းဆုံး Experience ကို ေပးတတ္တဲ့  Neo QLED 8Kလို';
+            $firstTitle = $profileName . ' က';
+            $secondTitle = ' Neo QLED 8K လေးပါ';
             $allFunnyText = [
                 [
                     '. အေကာင္းဆုံးအရာေတြကို ပိုင္ဆိုင္ခ်င္သူေလးပါ။'
@@ -162,16 +162,16 @@ class FacebookController extends Controller
                 ])
             ]);
 
-            $backgroundImage->text($firstTitle, 770, 420, function ($font) {
+            $backgroundImage->text($firstTitle, 900, 400, function ($font) {
                 $font->file(public_path('Zawgyi-One.ttf'));
                 $font->color('#09c9eb');
-                $font->size(33);
+                $font->size(40);
             });
 
-            $backgroundImage->text($secondTitle, 770, 465, function ($font) {
+            $backgroundImage->text($secondTitle, 950, 450, function ($font) {
                 $font->file(public_path('Zawgyi-One.ttf'));
                 $font->color('#09c9eb');
-                $font->size(28);
+                $font->size(40);
             });
 
             $x = 800;
@@ -182,7 +182,7 @@ class FacebookController extends Controller
                 $backgroundImage->text($eachText, $x, $y, function ($font) {
                     $font->file(public_path('Zawgyi-One.ttf'));
                     $font->color('#09c9eb');
-                    $font->size(30);
+                    $font->size(35);
                 });
             }
 
