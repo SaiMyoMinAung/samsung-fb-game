@@ -14,6 +14,16 @@ use Googlei18n\MyanmarTools\ZawgyiDetector;
 
 class FacebookController extends Controller
 {
+    public function policy()
+    {
+        return view('policy');
+    }
+
+    public function termsOfService()
+    {
+        return view('terms-of-service');
+    }
+
     public function faceboolLogin()
     {
         return view('facebook-login');
@@ -37,10 +47,24 @@ class FacebookController extends Controller
             $imageUrl = url('/samsung_tv_photos/' . $facebook_id . '.jpg');
             $textData = json_decode($gameUsedUser->text_data, true);
         } else {
-            $imageUrl = url('/samsung_support_photos/default.png');
+            $imageUrl = url('/samsung_support_photos/default.jpg');
         }
 
         return view('samsung-tv', ['facebookShareUrl' => $facebookShareUrl, 'imageUrl' => $imageUrl, 'textData' => $textData]);
+    }
+
+    public function deleteUserData(Request $request)
+    {
+        $facebook_id = $request->id;
+
+        if ($facebook_id) {
+            $gameUsedUser = GameUsedUser::where('facebook_id', $facebook_id)->first();
+            if (file_exists(public_path('samsung_tv_photos/' . $gameUsedUser->facebook_id . '.jpg'))) {
+                unlink(public_path('samsung_tv_photos/' . $gameUsedUser->facebook_id . '.jpg'));
+                $gameUsedUser->delete();
+            }
+        }
+        return redirect('/');
     }
 
     /**
@@ -92,7 +116,7 @@ class FacebookController extends Controller
 
 
             //To show picture 
-            $picture = public_path('user_profiles/' . $user->getId() . ".jpg");
+            // $picture = public_path('user_profiles/' . $user->getId() . ".jpg");
 
             // create new image instance
             $avatarImage = $imageManager->make($avatarContents);
@@ -101,7 +125,7 @@ class FacebookController extends Controller
             // fit
             $avatarImage->fit(220, 220);
             $avatarImage->mask($avatarMask, false);
-            $avatarImage->save($picture);
+            // $avatarImage->save($picture);
             // $avatarImage->composite
             // crop
             // $tvImage->crop(1024, 960);
@@ -133,18 +157,10 @@ class FacebookController extends Controller
                     '. အလွပဆုံးေနတတ္ၾကတယ္။'
                 ],
                 [
-                    '. ခ်စ္တဲ့သူေတြကို အေတာက္ပဆုံးအရာေတြကိုသာ',
-                    '  ေပးဆပ္တတ္သူေလးေပါ့။'
-                ],
-                [
                     '. အေကာင္းဆုံးအရာေတြကို ပိုင္ဆိုင္ခ်င္သူေလးပါ။'
                 ],
                 [
                     '. အလွပဆုံးေနတတ္ၾကတယ္။'
-                ],
-                [
-                    '. ခ်စ္တဲ့သူေတြကို အေတာက္ပဆုံးအရာေတြကိုသာ',
-                    '  ေပးဆပ္တတ္သူေလးေပါ့။'
                 ]
             ];
             $random_keys = array_rand($allFunnyText, 3);
@@ -164,25 +180,25 @@ class FacebookController extends Controller
 
             $backgroundImage->text($firstTitle, 900, 400, function ($font) {
                 $font->file(public_path('Zawgyi-One.ttf'));
-                $font->color('#09c9eb');
+                $font->color('#fafbfc');
                 $font->size(40);
             });
 
-            $backgroundImage->text($secondTitle, 950, 450, function ($font) {
-                $font->file(public_path('Zawgyi-One.ttf'));
-                $font->color('#09c9eb');
-                $font->size(40);
-            });
+            // $backgroundImage->text($secondTitle, 950, 450, function ($font) {
+            //     $font->file(public_path('Zawgyi-One.ttf'));
+            //     $font->color('#09c9eb');
+            //     $font->size(40);
+            // });
 
             $x = 800;
-            $y = 480;
+            $y = 550;
 
             foreach (Arr::flatten($funnyText) as $eachText) {
                 $y += 50;
                 $backgroundImage->text($eachText, $x, $y, function ($font) {
                     $font->file(public_path('Zawgyi-One.ttf'));
-                    $font->color('#09c9eb');
-                    $font->size(35);
+                    $font->color('#fafbfc');
+                    $font->size(30);
                 });
             }
 

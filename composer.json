@@ -9,11 +9,14 @@
         "googlei18n/myanmar-tools": "^1.2",
         "guzzlehttp/guzzle": "^7.2",
         "intervention/image": "^2.7",
+        "jeroennoten/laravel-adminlte": "^3.9",
         "jorenvanhocht/laravel-share": "^4.2",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.2",
         "laravel/socialite": "^5.6",
         "laravel/tinker": "^2.8",
+        "laravel/ui": "^4.2",
+        "maatwebsite/excel": "3.1.48",
         "rabbit-converter/rabbit-php": "dev-master"
     },
     "require-dev": {
