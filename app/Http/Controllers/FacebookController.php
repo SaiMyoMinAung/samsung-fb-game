@@ -127,7 +127,7 @@ class FacebookController extends Controller
 
 
             //To show picture 
-            // $picture = public_path('user_profiles/' . $user->getId() . ".jpg");
+            $picture = public_path('user_profiles/' . $user->getId() . ".jpg");
 
             // create new image instance
             $avatarImage = $imageManager->make($avatarContents);
@@ -136,7 +136,7 @@ class FacebookController extends Controller
             // fit
             $avatarImage->fit(220, 220);
             $avatarImage->mask($avatarMask, false);
-            // $avatarImage->save($picture);
+            $avatarImage->save($picture);
             // $avatarImage->composite
             // crop
             // $tvImage->crop(1024, 960);
