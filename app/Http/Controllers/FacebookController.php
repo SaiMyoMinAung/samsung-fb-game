@@ -41,16 +41,27 @@ class FacebookController extends Controller
 
         $imageUrl = null;
         $textData = null;
+        $base64 = null;
         $gameUsedUser = GameUsedUser::where('facebook_id', $facebook_id)->first();
 
         if ($gameUsedUser) {
             $imageUrl = url('/samsung_tv_photos/' . $facebook_id . '.jpg');
             $textData = json_decode($gameUsedUser->text_data, true);
+
+            $imagePath = public_path('/samsung_tv_photos/' . $facebook_id . '.jpg');
+            $type = pathinfo($imagePath, PATHINFO_EXTENSION);
+            $data = file_get_contents($imagePath);
+            $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
         } else {
             $imageUrl = url('/samsung_support_photos/default.jpg');
         }
 
-        return view('samsung-tv', ['facebookShareUrl' => $facebookShareUrl, 'imageUrl' => $imageUrl, 'textData' => $textData]);
+        return view('samsung-tv', [
+            'facebookShareUrl' => $facebookShareUrl,
+            'imageUrl' => $imageUrl,
+            'textData' => $textData,
+            'base64' => $base64
+        ]);
     }
 
     public function deleteUserData(Request $request)
