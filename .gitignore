@@ -5,7 +5,6 @@
 
 # Node artifact files
 node_modules/
-dist/
 
 # Compiled Java class files
 *.class
@@ -21,7 +20,6 @@ dist/
 
 # Maven
 target/
-dist/
 
 # JetBrains IDE
 .idea/
@@ -53,7 +51,6 @@ Thumbs.db
 /public/hot
 /public/storage
 /storage/*.key
-/vendor
 .env
 .env.production
 .env.backup
@@ -67,3 +64,4 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+/vendor
