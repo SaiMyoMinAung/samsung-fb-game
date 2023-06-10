@@ -77,7 +77,7 @@
         </div>
 
 
-        <div class="row justify-content-center">
+        {{-- <div class="row justify-content-center">
             <div class="col">
                 @if (isset($textData['tv_sub_title']))
                     <div class="text-center mb-3">
@@ -90,11 +90,11 @@
                     </div>
                 @endif
             </div>
-        </div>
+        </div> --}}
 
-        <div class="d-flex align-items-center justify-content-center">
+        <div class="row align-items-center justify-content-center">
             <div class="text-center">
-                <img width="70%" src="{{ $imageUrl }}">
+                <img width="80%" src="{{ $imageUrl }}">
             </div>
         </div>
 
