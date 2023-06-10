@@ -29,7 +29,7 @@ class FacebookController extends Controller
         return view('facebook-login');
     }
 
-    public function samsungTv(Request $request)
+    public function trySamsungTv(Request $request)
     {
         $share = new Share();
         $facebookShareUrl = $share->page(
