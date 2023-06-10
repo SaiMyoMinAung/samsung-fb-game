@@ -61,24 +61,29 @@
 
 <body>
     <div class="container">
+        <div class="row col justify-content-center">
+            <h2>{{ $textData['tv_name'] }}</h2>
+        </div>
         <div class="row">
             <div class="col">
-                <div class="text-center m-3">
-                    @if (isset($textData['first_title']) && isset($textData['second_title']))
-                        <p>{{ \Rabbit::zg2uni($textData['first_title']) }} {{ \Rabbit::zg2uni($textData['second_title']) }}</p>
+                <div class="text-center">
+                    @if (isset($textData['tv_first_title']) && isset($textData['tv_second_title']) && isset($textData['tv_third_title']))
+                        <p>{{ $textData['tv_first_title'] }} </p>
+                        <p>{{ $textData['tv_second_title'] }}</p>
+                        <p>{{ $textData['tv_third_title'] }}</p>
                     @endif
                 </div>
             </div>
         </div>
 
 
-        <div class="row  justify-content-center">
-            <div class="col-4">
-                @if (isset($textData['funny_text']))
+        <div class="row justify-content-center">
+            <div class="col">
+                @if (isset($textData['tv_sub_title']))
                     <div class="text-center mb-3">
                         <p class="">
-                            @foreach ($textData['funny_text'] as $text)
-                                {{ \Rabbit::zg2uni($text) }} <br>
+                            @foreach ($textData['tv_sub_title'] as $text)
+                                {{ $text }} <br>
                             @endforeach
                         <p>
 
@@ -94,12 +99,14 @@
         </div>
 
         <div class="row justify-content-center mt-2">
-            <a href="{{ $facebookShareUrl }}&tryButton=show" class="btn btn-lg btn-social btn-facebook m-2">
-                <i class="fa-solid fa-share"></i> Share to facebook
-            </a>
+            @if (!isset(request()->tryButton))
+                <a href="{{ $facebookShareUrl }}&tryButton=show" class="btn btn-lg btn-social btn-facebook m-2">
+                    <i class="fa-solid fa-share"></i> Share to facebook
+                </a>
+            @endif
             @if (isset(request()->tryButton))
                 <a href="{{ url('auth/facebook') }}" class="btn btn-lg btn-social btn-facebook m-2">
-                    <i class="fa-brands fa-facebook-f"></i> Login to play
+                    <i class="fa-brands fa-facebook-f"></i> Login to play this game
                 </a>
             @endif
         </div>

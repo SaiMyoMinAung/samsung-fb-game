@@ -24,7 +24,7 @@ class FacebookController extends Controller
         return view('terms-of-service');
     }
 
-    public function faceboolLogin()
+    public function facebookLogin()
     {
         return view('facebook-login');
     }
@@ -33,7 +33,7 @@ class FacebookController extends Controller
     {
         $share = new Share();
         $facebookShareUrl = $share->page(
-            route('samsung-tv', ['id' => $request->id]),
+            route('samsung-tv', ['id' => $request->id, 'tryButton' => 1]),
             'Samung TV',
         )->facebook()->getRawLinks();
 
@@ -108,26 +108,10 @@ class FacebookController extends Controller
                     'facebook_id' => $user->id,
                     'avatar' => $user->avatar
                 ]);
-
-                // return redirect()->intended('dashboard');
             }
 
             // get profile square photo
             $avatarContents = file_get_contents($user->getAvatar());
-
-            // get orginal photo
-            // https://developers.facebook.com/docs/graph-api/reference/user/picture
-            // $fileContents = file_get_contents($user->avatar_original . "&access_token=" . $user->token);
-
-            // get orignal photo with custom size
-            // $fileContents = file_get_contents($user->avatar_original . "&width=500&height=500&large&access_token=" . $user->token);
-
-            // save photo to public folder
-            // File::put(public_path() . '/user_profiles/' . $user->getId() . ".jpg", $avatarContents);
-
-
-            //To show picture 
-            // $picture = public_path('user_profiles/' . $user->getId() . ".jpg");
 
             // create new image instance
             $avatarImage = $imageManager->make($avatarContents);
@@ -136,15 +120,14 @@ class FacebookController extends Controller
             // fit
             $avatarImage->fit(220, 220);
             $avatarImage->mask($avatarMask, false);
-            // $avatarImage->save($picture);
-            // $avatarImage->composite
-            // crop
-            // $tvImage->crop(1024, 960);
 
-            $backgroundImage = $imageManager->make(public_path('samsung_support_photos/TV.jpg'));
+            $data = config('samsung');
+            $random = rand(0, count($data) - 1);
+            $randomData = $data[$random];
+
+            $backgroundImage = $imageManager->make(public_path($randomData['tv_location']));
 
             $backgroundImage->insert($avatarImage, 'top-left', 250, 440);
-            // $backgroundImage->insert($avatarImage, 'top-left', 0, 0);
 
             $detector = new ZawgyiDetector();
 
@@ -158,55 +141,40 @@ class FacebookController extends Controller
                 $profileName = $user->name;
             }
 
-            $firstTitle = $profileName . ' က';
-            $secondTitle = ' Neo QLED 8K လေးပါ';
-            $allFunnyText = [
-                [
-                    '. အေကာင္းဆုံးအရာေတြကို ပိုင္ဆိုင္ခ်င္သူေလးပါ။'
-                ],
-                [
-                    '. အလွပဆုံးေနတတ္ၾကတယ္။'
-                ],
-                [
-                    '. အေကာင္းဆုံးအရာေတြကို ပိုင္ဆိုင္ခ်င္သူေလးပါ။'
-                ],
-                [
-                    '. အလွပဆုံးေနတတ္ၾကတယ္။'
-                ]
-            ];
-            $random_keys = array_rand($allFunnyText, 3);
-            $funnyText = [
-                $allFunnyText[$random_keys[0]],
-                $allFunnyText[$random_keys[1]],
-                $allFunnyText[$random_keys[2]],
-            ];
+            $firstTitle = $profileName . ' ' . Rabbit::uni2zg($randomData['tv_first_title']);
+            $secondTitle = Rabbit::uni2zg($randomData['tv_second_title']);
+            $thirdTitle = Rabbit::uni2zg($randomData['tv_third_title']);
+
+            $randomData['tv_first_title'] = $profileName . ' ' . $randomData['tv_first_title'];
 
             $gameUsedUser->update([
-                'text_data' => json_encode([
-                    'first_title' => $firstTitle,
-                    'second_title' => $secondTitle,
-                    'funny_text' => Arr::flatten($funnyText)
-                ])
+                'text_data' => json_encode($randomData)
             ]);
 
-            $backgroundImage->text($firstTitle, 900, 400, function ($font) {
+            $backgroundImage->text($firstTitle, 800, 400, function ($font) {
                 $font->file(public_path('Zawgyi-One.ttf'));
                 $font->color('#fafbfc');
-                $font->size(40);
+                $font->size(33);
             });
 
-            // $backgroundImage->text($secondTitle, 950, 450, function ($font) {
-            //     $font->file(public_path('Zawgyi-One.ttf'));
-            //     $font->color('#09c9eb');
-            //     $font->size(40);
-            // });
+            $backgroundImage->text($secondTitle, 800, 450, function ($font) {
+                $font->file(public_path('Zawgyi-One.ttf'));
+                $font->color('#fafbfc');
+                $font->size(33);
+            });
 
-            $x = 800;
-            $y = 550;
+            $backgroundImage->text($thirdTitle, 820, 500, function ($font) {
+                $font->file(public_path('Zawgyi-One.ttf'));
+                $font->color('#fafbfc');
+                $font->size(33);
+            });
 
-            foreach (Arr::flatten($funnyText) as $eachText) {
+            $x = 820;
+            $y = 510;
+
+            foreach (Arr::flatten($randomData['tv_sub_title']) as $eachText) {
                 $y += 50;
-                $backgroundImage->text($eachText, $x, $y, function ($font) {
+                $backgroundImage->text(Rabbit::uni2zg($eachText), $x, $y, function ($font) {
                     $font->file(public_path('Zawgyi-One.ttf'));
                     $font->color('#fafbfc');
                     $font->size(30);

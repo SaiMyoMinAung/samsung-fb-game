@@ -16,7 +16,7 @@ use App\Http\Controllers\FacebookController;
 */
 
 Route::controller(FacebookController::class)->group(function () {
-    Route::get('/', 'faceboolLogin');
+    Route::get('/', 'facebookLogin');
     Route::get('samsung-tv', 'samsungTv')->name('samsung-tv');
     Route::get('delete-user-data', 'deleteUserData')->name('delete-user-data');
     Route::get('auth/facebook', 'redirectToFacebook')->name('auth.facebook');
