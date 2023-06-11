@@ -189,19 +189,19 @@ class FacebookController extends Controller
             $backgroundImage->text($firstTitle, 800, 400, function ($font) {
                 $font->file(public_path('Zawgyi-One.ttf'));
                 $font->color('#fafbfc');
-                $font->size(33);
+                $font->size(31);
             });
 
             $backgroundImage->text($secondTitle, 800, 450, function ($font) {
                 $font->file(public_path('Zawgyi-One.ttf'));
                 $font->color('#fafbfc');
-                $font->size(33);
+                $font->size(31);
             });
 
             $backgroundImage->text($thirdTitle, 820, 500, function ($font) {
                 $font->file(public_path('Zawgyi-One.ttf'));
                 $font->color('#fafbfc');
-                $font->size(33);
+                $font->size(31);
             });
 
             $x = 820;

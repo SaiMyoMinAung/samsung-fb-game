@@ -68,33 +68,9 @@
             <div class="col">
                 <div class="text-center">
                     @if (isset($textData['tv_first_title']) && isset($textData['tv_second_title']) && isset($textData['tv_third_title']))
-                        <p>{{ $textData['tv_first_title'] }} </p>
-                        <p>{{ $textData['tv_second_title'] }}</p>
-                        <p>{{ $textData['tv_third_title'] }}</p>
+                        <p>{{ $textData['tv_first_title'] }} {{ $textData['tv_second_title'] }} {{ $textData['tv_third_title'] }}</p>
                     @endif
                 </div>
-            </div>
-        </div>
-
-
-        {{-- <div class="row justify-content-center">
-            <div class="col">
-                @if (isset($textData['tv_sub_title']))
-                    <div class="text-center mb-3">
-                        <p class="">
-                            @foreach ($textData['tv_sub_title'] as $text)
-                                {{ $text }} <br>
-                            @endforeach
-                        <p>
-
-                    </div>
-                @endif
-            </div>
-        </div> --}}
-
-        <div class="row align-items-center justify-content-center">
-            <div class="text-center">
-                <img width="80%" src="{{ $imageUrl }}">
             </div>
         </div>
 
@@ -102,6 +78,12 @@
             <a href="{{ url('auth/facebook') }}" class="btn btn-lg btn-social btn-facebook m-2">
                 <i class="fa-brands fa-facebook-f"></i> Login to play this game
             </a>
+        </div>
+
+        <div class="row align-items-center justify-content-center">
+            <div class="text-center">
+                <img width="80%" src="{{ $imageUrl }}">
+            </div>
         </div>
     </div>
 </body>
