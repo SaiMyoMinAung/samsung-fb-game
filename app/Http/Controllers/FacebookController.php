@@ -8,7 +8,6 @@ use Jorenvh\Share\Share;
 use Illuminate\Support\Arr;
 use App\Models\GameUsedUser;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 use Intervention\Image\ImageManager;
 use Laravel\Socialite\Facades\Socialite;
 use Googlei18n\MyanmarTools\ZawgyiDetector;
@@ -81,7 +80,7 @@ class FacebookController extends Controller
         $gameUsedUser = GameUsedUser::where('facebook_id', $facebook_id)->first();
 
         if ($gameUsedUser) {
-            $imageUrl = public_path('/samsung_tv_photos/' . $facebook_id . '.jpg');
+            $imageUrl = url('/samsung_tv_photos/' . $facebook_id . '.jpg');
             $textData = json_decode($gameUsedUser->text_data, true);
 
             $imagePath = public_path('/samsung_tv_photos/' . $facebook_id . '.jpg');
@@ -160,7 +159,7 @@ class FacebookController extends Controller
             $avatarMask = $imageManager->make(public_path('samsung_support_photos/mask.png'));
 
             // // fit
-            $avatarImage->fit(220, 220);
+            $avatarImage->fit(255, 255);
             $avatarImage->mask($avatarMask, true);
 
             $data = config('samsung');
@@ -169,7 +168,7 @@ class FacebookController extends Controller
 
             $backgroundImage = $imageManager->make(public_path($randomData['tv_location']));
 
-            $backgroundImage->insert($avatarImage, 'top-left', 250, 440);
+            $backgroundImage->insert($avatarImage, 'top-left', 305, 535);
 
             $detector = new ZawgyiDetector();
 
@@ -193,33 +192,33 @@ class FacebookController extends Controller
                 'text_data' => json_encode($randomData)
             ]);
 
-            $backgroundImage->text($firstTitle, 800, 400, function ($font) {
+            $backgroundImage->text($firstTitle, 950, 450, function ($font) use ($randomData) {
                 $font->file(public_path('Zawgyi-One.ttf'));
-                $font->color('#fafbfc');
-                $font->size(31);
+                $font->color($randomData['text_color']);
+                $font->size(38);
             });
 
-            $backgroundImage->text($secondTitle, 800, 450, function ($font) {
+            $backgroundImage->text($secondTitle, 950, 510, function ($font) use ($randomData) {
                 $font->file(public_path('Zawgyi-One.ttf'));
-                $font->color('#fafbfc');
-                $font->size(31);
+                $font->color($randomData['text_color']);
+                $font->size(38);
             });
 
-            $backgroundImage->text($thirdTitle, 820, 500, function ($font) {
+            $backgroundImage->text($thirdTitle, 950, 570, function ($font) use ($randomData) {
                 $font->file(public_path('Zawgyi-One.ttf'));
-                $font->color('#fafbfc');
-                $font->size(31);
+                $font->color($randomData['text_color']);
+                $font->size(38);
             });
 
-            $x = 820;
-            $y = 510;
+            $x = 950;
+            $y = 600;
 
             foreach (Arr::flatten($randomData['tv_sub_title']) as $eachText) {
-                $y += 50;
-                $backgroundImage->text(Rabbit::uni2zg($eachText), $x, $y, function ($font) {
+                $y += 60;
+                $backgroundImage->text(Rabbit::uni2zg($eachText), $x, $y, function ($font) use ($randomData) {
                     $font->file(public_path('Zawgyi-One.ttf'));
-                    $font->color('#fafbfc');
-                    $font->size(30);
+                    $font->color($randomData['text_color']);
+                    $font->size(38);
                 });
             }
 

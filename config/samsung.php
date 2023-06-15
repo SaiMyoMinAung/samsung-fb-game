@@ -1,7 +1,10 @@
 <?php
 
+// #0a0a0a black
+// #fafbfc white
 return [
     [
+        'text_color' => '#fafbfc',
         'tv_location' => '/samsung_support_photos/neo_qled_8k.jpg',
         'tv_name' => 'Neo QLED 8K',
         'tv_main_title' => 'Beyond TV Feature, Big size highlighted',
@@ -15,6 +18,7 @@ return [
         ]
     ],
     [
+        'text_color' => '#fafbfc',
         'tv_location' => '/samsung_support_photos/neo_qled_8k.jpg',
         'tv_name' => 'Neo QLED 8K',
         'tv_main_title' => 'Beyond TV Feature, Big size highlighted',
@@ -28,6 +32,7 @@ return [
         ]
     ],
     [
+        'text_color' => '#fafbfc',
         'tv_location' => '/samsung_support_photos/oled.jpg',
         'tv_name' => 'OLED',
         'tv_main_title' => 'Slim Feature, Matte Black, More wow than ever',
@@ -41,6 +46,7 @@ return [
         ]
     ],
     [
+        'text_color' => '#fafbfc',
         'tv_location' => '/samsung_support_photos/oled.jpg',
         'tv_name' => 'OLED',
         'tv_main_title' => 'Slim Feature, Matte Black, More wow than ever',
@@ -54,6 +60,7 @@ return [
         ]
     ],
     [
+        'text_color' => '#0a0a0a',
         'tv_location' => '/samsung_support_photos/qled.jpg',
         'tv_name' => 'QLED',
         'tv_main_title' => 'Quantum Processor 4k, Motion accelertor',
@@ -67,6 +74,7 @@ return [
         ]
     ],
     [
+        'text_color' => '#0a0a0a',
         'tv_location' => '/samsung_support_photos/qled.jpg',
         'tv_name' => 'QLED',
         'tv_main_title' => 'Quantum Processor 4k, Motion accelertor',
@@ -80,6 +88,7 @@ return [
         ]
     ],
     [
+        'text_color' => '#0a0a0a',
         'tv_location' => '/samsung_support_photos/crystal_uhd.jpg',
         'tv_name' => 'Crystal UHD',
         'tv_main_title' => 'Crystal Clear, easy accessbile with laptop , Smart Hub',
@@ -93,6 +102,7 @@ return [
         ]
     ],
     [
+        'text_color' => '#0a0a0a',
         'tv_location' => '/samsung_support_photos/crystal_uhd.jpg',
         'tv_name' => 'Crystal UHD',
         'tv_main_title' => 'Crystal Clear, easy accessbile with laptop , Smart Hub',
