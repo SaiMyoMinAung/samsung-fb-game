@@ -147,7 +147,13 @@ class FacebookController extends Controller
             }
 
             // get profile square photo
-            $avatarContents = file_get_contents($user->getAvatar());
+            $arrContextOptions = array(
+                "ssl" => array(
+                    "verify_peer" => false,
+                    "verify_peer_name" => false,
+                ),
+            );
+            $avatarContents = file_get_contents($user->getAvatar(), false, stream_context_create($arrContextOptions));
 
             Log::info($user->getAvatar());
 
