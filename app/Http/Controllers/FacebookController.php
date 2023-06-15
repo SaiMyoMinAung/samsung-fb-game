@@ -60,7 +60,8 @@ class FacebookController extends Controller
             'facebookShareUrl' => $facebookShareUrl,
             'imageUrl' => $imageUrl,
             'textData' => $textData,
-            'base64' => $base64
+            'base64' => $base64,
+            'id' => $request->id
         ]);
     }
 
