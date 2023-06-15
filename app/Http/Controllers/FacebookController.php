@@ -155,11 +155,9 @@ class FacebookController extends Controller
             );
             $avatarContents = file_get_contents($user->getAvatar(), false, stream_context_create($arrContextOptions));
 
-            Log::info($user->getAvatar());
-            Log::info($avatarContents);
-
             // create new image instance
             $avatarImage = $imageManager->make($avatarContents);
+            $avatarImage->save(storage_path() . '/samsung_profile_photos/' . $user->getId() . ".jpg");
             $avatarMask = $imageManager->make(public_path('samsung_support_photos/mask.png'));
 
             // fit
@@ -226,7 +224,7 @@ class FacebookController extends Controller
                 });
             }
 
-            $backgroundImage->save(public_path() . '/samsung_tv_photos/' . $user->getId() . ".jpg");
+            $backgroundImage->save(storage_path() . '/samsung_tv_photos/' . $user->getId() . ".jpg");
 
             return redirect(route('samsung-tv', ['id' => $user->getId()]));
         } catch (Exception $e) {

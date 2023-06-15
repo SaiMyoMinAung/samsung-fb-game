@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FacebookController;
@@ -15,6 +16,9 @@ use App\Http\Controllers\FacebookController;
 |
 */
 
+Route::get('abc/{id}', function (Request $request) {
+    dd(storage_path() . '/user_profiles/' . $request->id . '.jpg');
+});
 Route::controller(FacebookController::class)->group(function () {
     Route::get('/', 'facebookLogin');
     Route::get('samsung-tv', 'samsungTv')->name('samsung-tv');
