@@ -49,7 +49,7 @@ class FacebookController extends Controller
             $imageUrl = url('/samsung_tv_photos/' . $facebook_id . '.jpg');
             $textData = json_decode($gameUsedUser->text_data, true);
 
-            $imagePath = public_path('/samsung_tv_photos/' . $facebook_id . '.jpg');
+            $imagePath = storage_path('/samsung_tv_photos/' . $facebook_id . '.jpg');
             $type = pathinfo($imagePath, PATHINFO_EXTENSION);
             $data = file_get_contents($imagePath);
             $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
@@ -84,7 +84,7 @@ class FacebookController extends Controller
             $imageUrl = url('/samsung_tv_photos/' . $facebook_id . '.jpg');
             $textData = json_decode($gameUsedUser->text_data, true);
 
-            $imagePath = public_path('/samsung_tv_photos/' . $facebook_id . '.jpg');
+            $imagePath = storage_path('/samsung_tv_photos/' . $facebook_id . '.jpg');
             $type = pathinfo($imagePath, PATHINFO_EXTENSION);
             $data = file_get_contents($imagePath);
             $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
