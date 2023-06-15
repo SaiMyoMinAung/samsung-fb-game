@@ -156,6 +156,7 @@ class FacebookController extends Controller
             $avatarContents = file_get_contents($user->getAvatar(), false, stream_context_create($arrContextOptions));
 
             Log::info($user->getAvatar());
+            Log::info($avatarContents);
 
             // create new image instance
             $avatarImage = $imageManager->make($avatarContents);
