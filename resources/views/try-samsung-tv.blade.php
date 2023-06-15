@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="og:url" content="{{ route('try-samsung-tv', ['id' => $id]) }}" />
+    <meta property="og:url" content="{{ route('samsung-tv', ['id' => $id]) }}" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="{{ $textData['tv_first_title'] ?? 'Samsung TV' }}" />
     <meta property="og:description" content="{{ $textData['tv_second_title'] ?? 'Samsung TV' }}" />
