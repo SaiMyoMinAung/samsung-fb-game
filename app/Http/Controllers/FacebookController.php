@@ -69,7 +69,7 @@ class FacebookController extends Controller
     {
         $share = new Share();
         $facebookShareUrl = $share->page(
-            route('try-samsung-tv', ['id' => $request->id]),
+            route('samsung-tv', ['id' => $request->id]),
             'Samung TV',
         )->facebook()->getRawLinks();
 
