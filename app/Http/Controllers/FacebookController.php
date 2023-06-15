@@ -157,11 +157,11 @@ class FacebookController extends Controller
 
             // create new image instance
             $avatarImage = $imageManager->make($avatarContents);
-            $avatarMask = $imageManager->make(public_path('samsung_support_photos/mask.png'));
+            // $avatarMask = $imageManager->make(public_path('samsung_support_photos/mask.png'));
 
-            // fit
-            $avatarImage->fit(220, 220);
-            $avatarImage->mask($avatarMask, false);
+            // // fit
+            // $avatarImage->fit(220, 220);
+            // $avatarImage->mask($avatarMask, false);
 
             $data = config('samsung');
             $random = rand(0, count($data) - 1);
