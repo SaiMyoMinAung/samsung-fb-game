@@ -8,6 +8,7 @@ use Jorenvh\Share\Share;
 use Illuminate\Support\Arr;
 use App\Models\GameUsedUser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Intervention\Image\ImageManager;
 use Laravel\Socialite\Facades\Socialite;
 use Googlei18n\MyanmarTools\ZawgyiDetector;
@@ -147,6 +148,8 @@ class FacebookController extends Controller
 
             // get profile square photo
             $avatarContents = file_get_contents($user->getAvatar());
+
+            Log::info($user->getAvatar());
 
             // create new image instance
             $avatarImage = $imageManager->make($avatarContents);
