@@ -49,7 +49,7 @@ class FacebookController extends Controller
             $imageUrl = url('/samsung_tv_photos/' . $facebook_id . '.jpg');
             $textData = json_decode($gameUsedUser->text_data, true);
 
-            $imagePath = storage_path('/samsung_tv_photos/' . $facebook_id . '.jpg');
+            $imagePath = public_path('/samsung_tv_photos/' . $facebook_id . '.jpg');
             $type = pathinfo($imagePath, PATHINFO_EXTENSION);
             $data = file_get_contents($imagePath);
             $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
@@ -81,10 +81,10 @@ class FacebookController extends Controller
         $gameUsedUser = GameUsedUser::where('facebook_id', $facebook_id)->first();
 
         if ($gameUsedUser) {
-            $imageUrl = storage_path('/samsung_tv_photos/' . $facebook_id . '.jpg');
+            $imageUrl = public_path('/samsung_tv_photos/' . $facebook_id . '.jpg');
             $textData = json_decode($gameUsedUser->text_data, true);
 
-            $imagePath = storage_path('/samsung_tv_photos/' . $facebook_id . '.jpg');
+            $imagePath = public_path('/samsung_tv_photos/' . $facebook_id . '.jpg');
             $type = pathinfo($imagePath, PATHINFO_EXTENSION);
             $data = file_get_contents($imagePath);
             $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
@@ -223,7 +223,7 @@ class FacebookController extends Controller
                 });
             }
 
-            $backgroundImage->save(storage_path() . '/samsung_tv_photos/' . $user->getId() . ".jpg");
+            $backgroundImage->save(public_path() . '/samsung_tv_photos/' . $user->getId() . ".jpg");
 
             return redirect(route('samsung-tv', ['id' => $user->getId()]));
         } catch (Exception $e) {
