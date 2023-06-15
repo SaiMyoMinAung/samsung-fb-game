@@ -81,7 +81,7 @@ class FacebookController extends Controller
         $gameUsedUser = GameUsedUser::where('facebook_id', $facebook_id)->first();
 
         if ($gameUsedUser) {
-            $imageUrl = url('/samsung_tv_photos/' . $facebook_id . '.jpg');
+            $imageUrl = storage_path('/samsung_tv_photos/' . $facebook_id . '.jpg');
             $textData = json_decode($gameUsedUser->text_data, true);
 
             $imagePath = storage_path('/samsung_tv_photos/' . $facebook_id . '.jpg');
