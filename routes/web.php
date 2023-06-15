@@ -15,10 +15,6 @@ use App\Http\Controllers\FacebookController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('abc/{id}', function (Request $request) {
-    return '<img src="' . storage_path('/user_profiles/' . $request->id . '.jpg') . '">';
-});
 Route::controller(FacebookController::class)->group(function () {
     Route::get('/', 'facebookLogin');
     Route::get('samsung-tv', 'samsungTv')->name('samsung-tv');
