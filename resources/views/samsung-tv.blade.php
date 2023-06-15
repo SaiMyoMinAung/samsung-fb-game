@@ -79,7 +79,7 @@
         </div>
 
         <div class="row justify-content-center mt-2">
-            <a href="{{ $facebookShareUrl }}&tryButton=show" class="btn btn-lg btn-social btn-facebook m-2">
+            <a href="{{ $facebookShareUrl }}" class="btn btn-lg btn-social btn-facebook m-2">
                 <i class="fa-solid fa-share"></i> Share to facebook
             </a>
         </div>
