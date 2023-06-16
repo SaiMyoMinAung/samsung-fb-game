@@ -4,11 +4,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="og:url" content="{{ config('app.url') }}" />
+    <meta property="og:url" content="{{ $facebookShareUrl }}" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="{{ $textData['tv_first_title'] ?? 'Samsung TV' }}" />
     <meta property="og:description" content="{{ $textData['tv_second_title'] ?? 'Samsung TV' }}" />
-    <meta property="og:image" content="{{ $base64 }}" />
+    <meta property="og:image" content="{{ $imageUrl }}" />
     <title>Samsung TV Game</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous">
