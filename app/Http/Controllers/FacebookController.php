@@ -86,7 +86,12 @@ class FacebookController extends Controller
 
             $imagePath = public_path('/samsung_tv_photos/' . $facebook_id . '.jpg');
             $type = pathinfo($imagePath, PATHINFO_EXTENSION);
-            $data = file_get_contents($imagePath);
+            if (file_exists($imagePath)) {
+                $data = file_get_contents($imagePath);
+            } else {
+                return redirect(route('auth.facebook'));
+            }
+
             $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
         } else {
             $imageUrl = url('/samsung_support_photos/default.jpg');
