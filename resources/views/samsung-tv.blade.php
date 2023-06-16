@@ -62,7 +62,7 @@
 <body>
     <div class="container">
         <div class="row col justify-content-center">
-            <h2>{{ $textData['tv_name'] }}</h2>
+            <h2>{{ $textData['tv_name'] ?? '-' }}</h2>
         </div>
         <div class="row">
             <div class="col">

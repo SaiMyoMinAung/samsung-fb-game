@@ -94,7 +94,7 @@ class FacebookController extends Controller
 
             $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
         } else {
-            $imageUrl = url('/samsung_support_photos/default.jpg');
+            return redirect(route('auth.facebook'));
         }
 
         return view('samsung-tv', [
