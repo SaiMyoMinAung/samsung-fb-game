@@ -82,6 +82,11 @@
             <a href="{{ $facebookShareUrl }}" class="btn btn-lg btn-social btn-facebook m-2">
                 <i class="fa-solid fa-share"></i> Share to facebook
             </a>
+            @if (Request()->tryButton == 'show')
+                <a href="{{ url('auth/facebook') }}" class="btn btn-lg btn-social btn-facebook m-2">
+                    <i class="fa-brands fa-facebook-f"></i> Login to play this game
+                </a>
+            @endif
         </div>
 
         <div class="row align-items-center justify-content-center">
