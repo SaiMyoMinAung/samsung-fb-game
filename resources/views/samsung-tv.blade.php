@@ -93,7 +93,7 @@
 
         <div class="row align-items-center justify-content-center">
             <div class="text-center">
-                <img width="80%" src="{{ $imageUrl }}">
+                <img width="100%" src="{{ $imageUrl }}">
             </div>
         </div>
     </div>
