@@ -86,7 +86,7 @@
                     <i class="fa-brands fa-facebook-f"></i> Play this game
                 </a>
             @else
-                <a href="{{ route('share', ['id' => $gameUsedUser->photo]) }}" class="btn btn-lg btn-social btn-facebook m-2">
+                <a href="{{ route('share', ['id' => request()->id]) }}" class="btn btn-lg btn-social btn-facebook m-2">
                     <i class="fa-solid fa-share"></i> Share to facebook
                 </a>
             @endif
