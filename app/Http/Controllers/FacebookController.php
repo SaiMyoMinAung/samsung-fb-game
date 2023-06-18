@@ -37,7 +37,9 @@ class FacebookController extends Controller
             return redirect('/');
         }
 
-        $gameUsedUser = GameUsedUser::where('photo', $photo)->first();
+        $gameUsedUser = GameUsedUser::whereHas('photos', function ($query) use ($photo) {
+            return $query->where('name', $photo);
+        })->first();
 
         $share = new Share();
 
@@ -76,7 +78,9 @@ class FacebookController extends Controller
             $imageUrl = null;
             $textData = null;
             $base64 = null;
-            $gameUsedUser = GameUsedUser::where('photo', $photo)->first();
+            $gameUsedUser = GameUsedUser::whereHas('photos', function ($query) use ($photo) {
+                return $query->where('photo', $photo);
+            })->first();
 
             if ($gameUsedUser) {
                 $imageUrl = url('/samsung_tv_photos/' . $photo);
@@ -146,6 +150,7 @@ class FacebookController extends Controller
 
             $gameUsedUser = GameUsedUser::updateOrCreate(['facebook_id' => $user->id], [
                 'name' => $user->name,
+                'email' => $user->email ?? null,
                 'facebook_id' => $user->id,
                 'avatar' => $user->avatar,
                 'shared' => 0
@@ -197,7 +202,10 @@ class FacebookController extends Controller
             $imageName = $user->getId() . '-' . rand(1, 10000) . ".jpg";
 
             $gameUsedUser->update([
-                'text_data' => json_encode($randomData),
+                'text_data' => json_encode($randomData)
+            ]);
+
+            $gameUsedUser->photos()->create([
                 'photo' => $imageName
             ]);
 
