@@ -152,7 +152,7 @@ class FacebookController extends Controller
                     'name' => $user->name,
                     'facebook_id' => $user->id,
                     'avatar' => $user->avatar,
-                    'shared' => false
+                    'shared' => 0
                 ]);
             }
 
