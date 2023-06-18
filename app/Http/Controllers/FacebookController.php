@@ -148,7 +148,7 @@ class FacebookController extends Controller
 
             if (!$gameUsedUser) {
 
-                $gameUsedUser = GameUsedUser::updateOrCreate(['email' => $user->email], [
+                $gameUsedUser = GameUsedUser::updateOrCreate(['facebook_id' => $user->id], [
                     'name' => $user->name,
                     'facebook_id' => $user->id,
                     'avatar' => $user->avatar,
