@@ -29,81 +29,84 @@ class FacebookController extends Controller
         return view('facebook-login');
     }
 
-    public function trySamsungTv(Request $request)
+    public function share(Request $request)
     {
+        $photo = $request->id;
+
+        if (!$photo) {
+            return redirect('/');
+        }
+
+        $gameUsedUser = GameUsedUser::where('photo', $photo)->first();
+
         $share = new Share();
+
         $facebookShareUrl = $share->page(
-            route('try-samsung-tv', ['id' => $request->id]),
+            route('samsung-tv', ['id' => $photo]),
             'Samung TV',
         )->facebook()->getRawLinks();
 
-        $facebook_id = $request->id;
-
-        $imageUrl = null;
-        $textData = null;
-        $base64 = null;
-        $gameUsedUser = GameUsedUser::where('facebook_id', $facebook_id)->first();
-
-        if ($gameUsedUser) {
-            $imageUrl = url('/samsung_tv_photos/' . $facebook_id . '.jpg');
-            $textData = json_decode($gameUsedUser->text_data, true);
-
-            $imagePath = public_path('/samsung_tv_photos/' . $facebook_id . '.jpg');
-            $type = pathinfo($imagePath, PATHINFO_EXTENSION);
-            $data = file_get_contents($imagePath);
-            $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
-        } else {
-            $imageUrl = url('/samsung_support_photos/default.jpg');
+        if (!$gameUsedUser) {
+            return redirect('/');
         }
 
-        return view('try-samsung-tv', [
-            'facebookShareUrl' => $facebookShareUrl,
-            'imageUrl' => $imageUrl,
-            'textData' => $textData,
-            'base64' => $base64,
-            'id' => $request->id
+        $gameUsedUser->update([
+            'shared' => 1
         ]);
+
+        return redirect($facebookShareUrl);
     }
 
     public function samsungTv(Request $request)
     {
-        $share = new Share();
-        $facebookShareUrl = $share->page(
-            route('samsung-tv', ['id' => $request->id, 'tryButton' => 'show']),
-            'Samung TV',
-        )->facebook()->getRawLinks();
+        try {
+            $photo = $request->id;
 
-        $facebook_id = $request->id;
-
-        $imageUrl = null;
-        $textData = null;
-        $base64 = null;
-        $gameUsedUser = GameUsedUser::where('facebook_id', $facebook_id)->first();
-
-        if ($gameUsedUser) {
-            $imageUrl = url('/samsung_tv_photos/' . $facebook_id . '.jpg');
-            $textData = json_decode($gameUsedUser->text_data, true);
-
-            $imagePath = public_path('/samsung_tv_photos/' . $facebook_id . '.jpg');
-            $type = pathinfo($imagePath, PATHINFO_EXTENSION);
-            if (file_exists($imagePath)) {
-                $data = file_get_contents($imagePath);
-            } else {
-                return redirect(route('auth.facebook'));
+            if (!$photo) {
+                return redirect('/');
             }
 
-            $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
-        } else {
-            return redirect(route('auth.facebook'));
-        }
+            $share = new Share();
 
-        return view('samsung-tv', [
-            'facebookShareUrl' => $facebookShareUrl,
-            'imageUrl' => $imageUrl,
-            'textData' => $textData,
-            'base64' => $base64,
-            'id' => $request->id
-        ]);
+            $facebookShareUrl = $share->page(
+                route('samsung-tv', ['id' => $photo]),
+                'Samung TV',
+            )->facebook()->getRawLinks();
+
+            $imageUrl = null;
+            $textData = null;
+            $base64 = null;
+            $gameUsedUser = GameUsedUser::where('photo', $photo)->first();
+
+            if ($gameUsedUser) {
+                $imageUrl = url('/samsung_tv_photos/' . $photo);
+                $textData = json_decode($gameUsedUser->text_data, true);
+
+                $imagePath = public_path('/samsung_tv_photos/' . $photo);
+                $type = pathinfo($imagePath, PATHINFO_EXTENSION);
+
+                if (file_exists($imagePath)) {
+                    $data = file_get_contents($imagePath);
+                } else {
+                    return redirect('/');
+                }
+
+                $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+
+                return view('samsung-tv', [
+                    'facebookShareUrl' => $facebookShareUrl,
+                    'imageUrl' => $imageUrl,
+                    'textData' => $textData,
+                    'base64' => $base64,
+                    'gameUsedUser' => $gameUsedUser
+                ]);
+            }
+
+            return redirect('/');
+        } catch (Exception $e) {
+            report($e);
+            return redirect('/');
+        }
     }
 
     public function deleteUserData(Request $request)
@@ -148,7 +151,8 @@ class FacebookController extends Controller
                 $gameUsedUser = GameUsedUser::updateOrCreate(['email' => $user->email], [
                     'name' => $user->name,
                     'facebook_id' => $user->id,
-                    'avatar' => $user->avatar
+                    'avatar' => $user->avatar,
+                    'shared' => false
                 ]);
             }
 
@@ -195,8 +199,11 @@ class FacebookController extends Controller
 
             $randomData['tv_first_title'] = $profileName . ' ' . $randomData['tv_first_title'];
 
+            $imageName = $user->getId() . '-' . rand(1, 10000) . ".jpg";
+
             $gameUsedUser->update([
-                'text_data' => json_encode($randomData)
+                'text_data' => json_encode($randomData),
+                'photo' => $imageName
             ]);
 
             $backgroundImage->text($firstTitle, 950, 450, function ($font) use ($randomData) {
@@ -229,13 +236,13 @@ class FacebookController extends Controller
                 });
             }
 
-            $backgroundImage->save(public_path() . '/samsung_tv_photos/' . $user->getId() . ".jpg");
+            $backgroundImage->save(public_path() . '/samsung_tv_photos/' . $imageName);
 
-            return redirect(route('samsung-tv', ['id' => $user->getId()]));
+            return redirect(route('samsung-tv', ['id' => $imageName]));
         } catch (Exception $e) {
             report($e->getMessage());
 
-            return redirect(route('samsung-tv'));
+            return redirect('/');
         }
     }
 }

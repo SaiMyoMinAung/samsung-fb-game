@@ -9,5 +9,5 @@ class GameUsedUser extends Model
 {
     use HasFactory;
 
-    public $fillable = ['name', 'email', 'avatar', 'facebook_id', 'text_data'];
+    public $fillable = ['name', 'email', 'avatar', 'facebook_id', 'text_data', 'shared', 'photo'];
 }

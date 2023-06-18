@@ -50,6 +50,7 @@ Thumbs.db
 /node_modules
 /public/hot
 /public/storage
+/public/samsung_tv_photos
 /storage/*.key
 .env
 .env.production

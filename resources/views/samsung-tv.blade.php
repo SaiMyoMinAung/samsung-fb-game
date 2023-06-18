@@ -79,12 +79,13 @@
         </div>
 
         <div class="row justify-content-center mt-2">
-            <a href="{{ $facebookShareUrl }}" class="btn btn-lg btn-social btn-facebook m-2">
-                <i class="fa-solid fa-share"></i> Share to facebook
-            </a>
-            @if (Request()->tryButton == 'show')
+            @if ($gameUsedUser->shared == 1)
                 <a href="{{ url('auth/facebook') }}" class="btn btn-lg btn-social btn-facebook m-2">
-                    <i class="fa-brands fa-facebook-f"></i> Login to play this game
+                    <i class="fa-brands fa-facebook-f"></i> Play this game
+                </a>
+            @else
+                <a href="{{ route('share', ['id' => $gameUsedUser->photo]) }}" class="btn btn-lg btn-social btn-facebook m-2">
+                    <i class="fa-solid fa-share"></i> Share to facebook
                 </a>
             @endif
         </div>
