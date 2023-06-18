@@ -38,7 +38,7 @@ class FacebookController extends Controller
         }
 
         $gameUsedUser = GameUsedUser::whereHas('photos', function ($query) use ($photo) {
-            return $query->where('name', $photo);
+            return $query->where('photo', $photo);
         })->first();
 
         $share = new Share();
