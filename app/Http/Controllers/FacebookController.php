@@ -144,17 +144,12 @@ class FacebookController extends Controller
 
             $user = Socialite::driver('facebook')->stateless()->user();
 
-            $gameUsedUser = GameUsedUser::where('facebook_id', $user->id)->first();
-
-            if (!$gameUsedUser) {
-
-                $gameUsedUser = GameUsedUser::updateOrCreate(['facebook_id' => $user->id], [
-                    'name' => $user->name,
-                    'facebook_id' => $user->id,
-                    'avatar' => $user->avatar,
-                    'shared' => 0
-                ]);
-            }
+            $gameUsedUser = GameUsedUser::updateOrCreate(['facebook_id' => $user->id], [
+                'name' => $user->name,
+                'facebook_id' => $user->id,
+                'avatar' => $user->avatar,
+                'shared' => 0
+            ]);
 
             // get profile square photo
             $arrContextOptions = array(
