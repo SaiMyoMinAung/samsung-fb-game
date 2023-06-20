@@ -170,7 +170,7 @@ class FacebookController extends Controller
             $avatarMask = $imageManager->make(public_path('samsung_support_photos/mask.png'));
 
             // // fit
-            $avatarImage->fit(255, 255);
+            $avatarImage->fit(292, 292);
             $avatarImage->mask($avatarMask, true);
 
             $data = config('samsung');
@@ -179,7 +179,7 @@ class FacebookController extends Controller
 
             $backgroundImage = $imageManager->make(public_path($randomData['tv_location']));
 
-            $backgroundImage->insert($avatarImage, 'top-left', 305, 535);
+            $backgroundImage->insert($avatarImage, 'top-left', 228, 512);
 
             $detector = new ZawgyiDetector();
 
@@ -209,33 +209,33 @@ class FacebookController extends Controller
                 'photo' => $imageName
             ]);
 
-            $backgroundImage->text($firstTitle, 950, 450, function ($font) use ($randomData) {
-                $font->file(public_path('Zawgyi-One.ttf'));
+            $backgroundImage->text($firstTitle, 850, 450, function ($font) use ($randomData) {
+                $font->file(public_path('MyanmarSangamZawgyi-Bold.ttf'));
                 $font->color($randomData['text_color']);
-                $font->size(38);
+                $font->size(50);
             });
 
-            $backgroundImage->text($secondTitle, 950, 510, function ($font) use ($randomData) {
-                $font->file(public_path('Zawgyi-One.ttf'));
+            $backgroundImage->text($secondTitle, 850, 510, function ($font) use ($randomData) {
+                $font->file(public_path('MyanmarSangamZawgyi-Bold.ttf'));
                 $font->color($randomData['text_color']);
-                $font->size(38);
+                $font->size(50);
             });
 
-            $backgroundImage->text($thirdTitle, 950, 570, function ($font) use ($randomData) {
-                $font->file(public_path('Zawgyi-One.ttf'));
+            $backgroundImage->text($thirdTitle, 850, 570, function ($font) use ($randomData) {
+                $font->file(public_path('MyanmarSangamZawgyi-Bold.ttf'));
                 $font->color($randomData['text_color']);
-                $font->size(38);
+                $font->size(50);
             });
 
-            $x = 950;
+            $x = 850;
             $y = 600;
 
             foreach (Arr::flatten($randomData['tv_sub_title']) as $eachText) {
                 $y += 60;
                 $backgroundImage->text(Rabbit::uni2zg($eachText), $x, $y, function ($font) use ($randomData) {
-                    $font->file(public_path('Zawgyi-One.ttf'));
+                    $font->file(public_path('MyanmarSangamZawgyi-Bold.ttf'));
                     $font->color($randomData['text_color']);
-                    $font->size(38);
+                    $font->size(50);
                 });
             }
 

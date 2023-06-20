@@ -60,7 +60,7 @@ return [
         ]
     ],
     [
-        'text_color' => '#0a0a0a',
+        'text_color' => '#fafbfc',
         'tv_location' => '/samsung_support_photos/qled.jpg',
         'tv_name' => 'QLED',
         'tv_main_title' => 'Quantum Processor 4k, Motion accelertor',
@@ -74,7 +74,7 @@ return [
         ]
     ],
     [
-        'text_color' => '#0a0a0a',
+        'text_color' => '#fafbfc',
         'tv_location' => '/samsung_support_photos/qled.jpg',
         'tv_name' => 'QLED',
         'tv_main_title' => 'Quantum Processor 4k, Motion accelertor',
@@ -88,7 +88,7 @@ return [
         ]
     ],
     [
-        'text_color' => '#0a0a0a',
+        'text_color' => '#fafbfc',
         'tv_location' => '/samsung_support_photos/crystal_uhd.jpg',
         'tv_name' => 'Crystal UHD',
         'tv_main_title' => 'Crystal Clear, easy accessbile with laptop , Smart Hub',
@@ -102,7 +102,7 @@ return [
         ]
     ],
     [
-        'text_color' => '#0a0a0a',
+        'text_color' => '#fafbfc',
         'tv_location' => '/samsung_support_photos/crystal_uhd.jpg',
         'tv_name' => 'Crystal UHD',
         'tv_main_title' => 'Crystal Clear, easy accessbile with laptop , Smart Hub',
