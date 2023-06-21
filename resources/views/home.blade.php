@@ -26,6 +26,7 @@
                                     <th scope="col">#</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Email</th>
+                                    <th scope="col">Played Date</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -34,6 +35,7 @@
                                         <th scope="row">{{ $loop->index + 1 }}</th>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
+                                        <td>{{ $user->created_at }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>

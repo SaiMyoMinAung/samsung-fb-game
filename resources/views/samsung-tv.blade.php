@@ -57,10 +57,32 @@
             margin: 0 auto;
             max-width: 500px;
         }
+
+        #loading {
+            /* (A1) COVER FULL PAGE */
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 999;
+            width: 100vw;
+            height: 100vh;
+
+            /* (A2) SPINNER IMAGE */
+            background-color: white;
+            background-image: url("/samsung_support_photos/photo_camera.gif");
+            background-position: center;
+            background-repeat: no-repeat;
+            text-align: center;
+            padding-top: 15%;
+        }
     </style>
 </head>
 
 <body>
+    <div id="loading">
+        <h1>သင့်အချစ်ကို ကိုယ်စားပြုတဲ့</h1>
+        <h1>Samsung TV က ဘာလဲ? </h1>
+    </div>
     <div class="container">
         <div class="row col justify-content-center">
             <h2>{{ $textData['tv_name'] ?? '-' }}</h2>
@@ -98,5 +120,12 @@
         </div>
     </div>
 </body>
+<script>
+    const myTimeout = setTimeout(loading, 3000);
+
+    function loading() {
+        document.getElementById("loading").remove();
+    }
+</script>
 
 </html>
