@@ -103,7 +103,7 @@
 
         <div class="row justify-content-center mt-2">
             @if ($gameUsedUser->shared == 1)
-                <a href="{{ url('auth/facebook') }}" class="btn btn-lg btn-social btn-facebook m-2">
+                <a href="/" class="btn btn-lg btn-social btn-facebook m-2">
                     <i class="fa-brands fa-facebook-f"></i> Play this game
                 </a>
             @else
