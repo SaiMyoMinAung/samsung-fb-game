@@ -53,8 +53,8 @@
 <body>
     <div class="container d-flex align-items-center justify-content-center">
         <div>
-            <h1>If you were Samsung TV,</h1>
-            <h1>what will you be?</h1>
+            <h1>သင့်အချစ်ကို ကိုယ်စားပြုတဲ့</h1>
+            <h1>Samsung TVက ဘာလဲ။</h1>
             <a href="{{ url('auth/facebook') }}" class="btn btn-lg btn-social btn-facebook">
                 <i class="fa-brands fa-facebook-f"></i> Sign in with Facebook
             </a>

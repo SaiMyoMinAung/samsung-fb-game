@@ -175,7 +175,6 @@ class FacebookController extends Controller
 
             $data = config('samsung');
             $random = rand(0, count($data) - 1);
-            $random = 7;
             $randomData = $data[$random];
 
             $backgroundImage = $imageManager->make(public_path($randomData['tv_location']));
@@ -229,14 +228,14 @@ class FacebookController extends Controller
             });
 
             $x = 850;
-            $y = 600;
+            $y = 580;
 
             foreach (Arr::flatten($randomData['tv_sub_title']) as $eachText) {
                 $y += 70;
                 $backgroundImage->text(Rabbit::uni2zg($eachText), $x, $y, function ($font) use ($randomData) {
                     $font->file(public_path('MyanmarSangamZawgyi-Bold.ttf'));
                     $font->color($randomData['text_color']);
-                    $font->size(58);
+                    $font->size(50);
                 });
             }
 
