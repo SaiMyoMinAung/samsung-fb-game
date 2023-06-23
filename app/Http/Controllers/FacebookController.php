@@ -175,7 +175,6 @@ class FacebookController extends Controller
 
             $data = config('samsung');
             $random = rand(0, count($data) - 1);
-            $random = 7;
             $randomData = $data[$random];
 
             $backgroundImage = $imageManager->make(public_path($randomData['tv_location']));
