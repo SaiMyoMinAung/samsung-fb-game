@@ -34,6 +34,19 @@ return [
     ],
     [
         'text_color' => '#fafbfc',
+        'tv_location' => '/samsung_support_photos/neo_qled_8k.jpg',
+        'tv_name' => 'Neo QLED 8K',
+        'tv_main_title' => 'Beyond TV Feature, Big size highlighted',
+        'tv_first_title' => 'ရဲ့ အချစ်ကတော့',
+        'tv_second_title' => 'ကမ္ဘာ့အကောင်းဆုံး TV လို့ သတ်မှတ်ရတဲ့',
+        'tv_third_title' => 'Neo QLED 8K လိုပါပဲတဲ့။',
+        'tv_sub_title' => [
+            '- ချစ်ပြီဆို တားမရအောင် အကောင်းဆုံး ချစ်တတ်၊ ',
+            'အရာရာဖြည့်ဆည်းပေးတတ်တဲ့ ရိုတတ်သူကြီးပါ'
+        ]
+    ],
+    [
+        'text_color' => '#fafbfc',
         'tv_location' => '/samsung_support_photos/oled.jpg',
         'tv_name' => 'OLED',
         'tv_main_title' => 'Slim Feature, Matte Black, More wow than ever',
@@ -59,6 +72,20 @@ return [
             'ချစ်တော့ချစ်တယ် အလိုမလိုက်ဘူးဆိုပြီးတော့',
             'မိုးလောက်ကြီး ချစ်ရင်တောင် ဖော်ပြဖို့ ',
             'ဝန်လေးတတ်တဲ့ ရေခဲတုံးကြီးပါ။'
+        ]
+    ],
+    [
+        'text_color' => '#fafbfc',
+        'tv_location' => '/samsung_support_photos/oled.jpg',
+        'tv_name' => 'OLED',
+        'tv_main_title' => 'Slim Feature, Matte Black, More wow than ever',
+        'tv_first_title' => 'ရဲ့ အချစ်ကို ကိုယ်စားပြုတာကတော့',
+        'tv_second_title' => 'ပါးလွှာကျော့ရှင်း Infinity One Design နဲ့ ',
+        'tv_third_title' => 'OLED TV လေးပါတဲ့။',
+        'tv_sub_title' => [
+            '- တစ်ယောက်ဆိုတစ်ယောက်၊ ပိတောက်ဆိုပိတောက်',
+            'ဆိုတဲ့အတိုင်း Infinity အချစ်တွေပေးတတ်တဲ့',
+            'ချစ်သူ့ မူပိုင်ရှင်လေးပါ'
         ]
     ],
     [
@@ -92,6 +119,20 @@ return [
     ],
     [
         'text_color' => '#fafbfc',
+        'tv_location' => '/samsung_support_photos/qled.jpg',
+        'tv_name' => 'QLED',
+        'tv_main_title' => 'Quantum Processor 4k, Motion accelertor',
+        'tv_first_title' => 'ရဲ့ အချစ်ကတော့ ပါးလျပြီး',
+        'tv_second_title' => 'အရောင်အသွေးစုံတဲ့',
+        'tv_third_title' => 'QLED လိုပါပဲတဲ့။',
+        'tv_sub_title' => [
+            '- Surprise တွေတိုက်တတ်၊ ရိုတတ်သူကြီး ',
+            'မဟုတ်ပေမဲ့ ချစ်သူအတွက်ဆို ဘယ်လောက်ခက်ခဲခက်ခဲ ',
+            'ပင်ပင်ပန်းပန်း သည်းခံတတ်တဲ့ ချစ်တတ်သူလေးပါ....'
+        ]
+    ],
+    [
+        'text_color' => '#fafbfc',
         'tv_location' => '/samsung_support_photos/crystal_uhd.jpg',
         'tv_name' => 'Crystal UHD',
         'tv_main_title' => 'Crystal Clear, easy accessbile with laptop , Smart Hub',
@@ -117,6 +158,19 @@ return [
             'မှာ အရိပ်တကြည့်ကြည့်နဲ့ ကြောင်လေးတစ်ကောင်လို',
             'ချွဲတတ်တဲ့ Crystal လို ကြည်လင်တဲ့ မျက်နှာလေးနဲ့ပေါ့။'
         ]
+    ],
+    [
+        'text_color' => '#fafbfc',
+        'tv_location' => '/samsung_support_photos/crystal_uhd.jpg',
+        'tv_name' => 'Crystal UHD',
+        'tv_main_title' => 'Crystal Clear, easy accessbile with laptop , Smart Hub',
+        'tv_first_title' => 'ရဲ့ အချစ်ကတော့ ကြည်လင်',
+        'tv_second_title' => 'ပြတ်သားပြီး Smart ကျတဲ့',
+        'tv_third_title' => 'Crystal UHD ကို ကိုယ်စားပြုပါတယ်။',
+        'tv_sub_title' => [
+            '- ခံစားရတဲ့အတိုင်း ချစ်ပြတတ်ပြီး ',
+            'လျှို့ဝှက်ချက်တွေနည်းနည်းလေးတောင်မထားတတ်တဲ့',
+            'Crystal လို ကြည်ကြည်လင်လင် ချစ်သူလေးပါတဲ့'
+        ]
     ]
-
 ];
